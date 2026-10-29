@@ -2,25 +2,24 @@
   "releases": [
     {
       "platform": "windows",
-      "version": "",
-      "size": 0,
-      "releasedAt": "",
-      "downloadUrl": ""
+      "version": "1.0.13",
+      "size": 111162148,
+      "releasedAt": "2026-10-29T07:12:02.542Z",
+      "downloadUrl": "https://test-cdn-ordobit.razzz.in/downloads/windows/Ordobit-Setup-1.0.13.exe"
     },
     {
       "platform": "linux",
-      "version": "",
-      "size": 0,
-      "releasedAt": "",
-      "downloadUrl": ""
+      "version": "1.0.11",
+      "size": 125580515,
+      "releasedAt": "2026-10-28T12:10:54.680Z",
+      "downloadUrl": "https://test-cdn-ordobit.razzz.in/downloads/linux/Ordobit-1.0.11.AppImage"
     },
     {
       "platform": "android",
-      "version": "",
-      "size": 0,
-      "releasedAt": "",
-      "downloadUrl": ""
+      "version": "1.0.11",
+      "size": 3167610,
+      "releasedAt": "Thu, 29 Oct 2026 07:12:52 GMT",
+      "downloadUrl": "https://test-cdn-ordobit.razzz.in/downloads/android/Ordobit-1.0.11.apk"
     }
   ]
 }
-
