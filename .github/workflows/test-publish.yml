@@ -1,0 +1,52 @@
+name: Test Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: Device platform
+        required: true
+        type: choice
+        options:
+          - windows
+          - linux
+          - android
+      version:
+        description: Release version
+        required: true
+        type: string
+      download_url:
+        description: Installer URL
+        required: true
+        type: string
+      size:
+        description: Installer size in bytes
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Update release
+        env:
+          RELEASE_PLATFORM: ${{ inputs.platform }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          DOWNLOAD_URL: ${{ inputs.download_url }}
+          RELEASE_SIZE: ${{ inputs.size }}
+        run: node scripts/update-release.mjs
+
+      - name: Commit release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases.json
+          git diff --cached --quiet || git commit -m "chore: update device release"
+          git push

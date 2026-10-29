@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#f7f9fc" />
+    <meta
+      name="description"
+      content="Download the latest Ordobit device client for Windows, Linux and Android."
+    />
+    <title>Downloads — Ordobit</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/ordobit-logo.svg" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../pages/downloads/downloads.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div id="site-header"></div>
+
+      <main class="downloads-page container">
+        <section class="downloads-intro" aria-labelledby="downloads-title">
+          <p class="eyebrow"><span class="status-dot"></span> Device client</p>
+          <h1 id="downloads-title">Download the Ordobit device client.</h1>
+          <p>
+            Choose your platform below. This page displays the latest available
+            build for each supported device.
+          </p>
+        </section>
+
+        <section class="release-note" aria-label="Release information">
+          <div class="release-note-mark">↗</div>
+          <div>
+            <strong>One client, three platforms.</strong>
+            <span>Use Windows or Linux for desktop devices and Android for touch kiosks.</span>
+          </div>
+          <span class="release-channel">Stable channel</span>
+        </section>
+
+        <section class="download-grid" id="download-list" aria-live="polite" aria-busy="true">
+          <div class="loading-card">Loading latest builds…</div>
+        </section>
+
+        <section class="install-help" aria-labelledby="install-title">
+          <div>
+            <p class="eyebrow">After installation</p>
+            <h2 id="install-title">Connect the device to your workspace.</h2>
+          </div>
+          <ol>
+            <li><span>01</span><p>Install the client on the device.</p></li>
+            <li><span>02</span><p>Open the app and pair it with your workspace.</p></li>
+            <li><span>03</span><p>Choose the device role and start the shift.</p></li>
+          </ol>
+        </section>
+      </main>
+
+      <div id="site-footer"></div>
+    </div>
+
+    <script src="../pages/downloads/downloads.js" type="module"></script>
+  </body>
+</html>

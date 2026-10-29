@@ -1,0 +1,272 @@
+.downloads-page {
+  padding-block: 76px 98px;
+  container-type: inline-size;
+}
+
+.downloads-intro {
+  max-width: 720px;
+}
+
+.downloads-intro h1 {
+  max-width: 720px;
+  margin-bottom: 21px;
+  font-size: clamp(3rem, 6vw, 5.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.07em;
+}
+
+.downloads-intro > p:last-child {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.release-note {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 45px;
+  padding: 17px 19px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.release-note-mark {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+  background: var(--green);
+  color: #fff;
+  font-weight: 900;
+}
+
+.release-note strong,
+.release-note span {
+  display: block;
+}
+
+.release-note strong {
+  margin-bottom: 3px;
+  font-size: 0.87rem;
+}
+
+.release-note div:nth-child(2) span {
+  color: var(--muted);
+  font-size: 0.77rem;
+}
+
+.release-channel {
+  margin-left: auto;
+  color: var(--green-dark);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 18px;
+}
+
+.download-card,
+.loading-card {
+  min-height: 365px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.loading-card {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.platform-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 45px;
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.platform-icon img {
+  width: 23px;
+  height: 23px;
+}
+
+.download-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.32rem;
+  letter-spacing: -0.03em;
+}
+
+.download-card .description {
+  min-height: 45px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.download-meta {
+  display: flex;
+  gap: 18px;
+  margin: 22px 0 24px;
+  padding-block: 14px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--dim);
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.meta-value {
+  color: var(--ink);
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+.download-card .button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.download-card.unavailable {
+  opacity: 0.75;
+}
+
+.download-card.unavailable .button {
+  cursor: not-allowed;
+  color: var(--muted);
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+.install-help {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 70px;
+  margin-top: 72px;
+  padding-top: 31px;
+  border-top: 1px solid var(--line);
+}
+
+.install-help h2 {
+  max-width: 360px;
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.install-help ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.install-help li {
+  padding: 16px;
+  border-left: 2px solid var(--line);
+}
+
+.install-help li span {
+  color: var(--green-dark);
+  font-size: 0.69rem;
+  font-weight: 800;
+}
+
+.install-help li p {
+  margin: 36px 0 0;
+  color: var(--muted);
+  font-size: 0.81rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .download-card {
+    min-height: 0;
+  }
+
+  .install-help {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .install-help ol {
+    grid-template-columns: 1fr;
+  }
+
+  .install-help li {
+    min-height: 90px;
+  }
+
+  .install-help li p {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .downloads-intro h1 {
+    font-size: clamp(2.95rem, 15vw, 4.1rem);
+  }
+
+  .release-note {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .release-channel {
+    width: 100%;
+    margin-left: 50px;
+  }
+
+  .download-card {
+    padding: 21px;
+  }
+}
+
+@container (max-width: 760px) {
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (pointer: coarse) {
+  .download-card {
+    padding: 28px;
+  }
+
+  .install-help li {
+    padding: 20px;
+  }
+}
