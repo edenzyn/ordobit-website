@@ -1,4 +1,26 @@
 {
-  "releases": []
+  "releases": [
+    {
+      "platform": "windows",
+      "version": "",
+      "size": 0,
+      "releasedAt": "",
+      "downloadUrl": ""
+    },
+    {
+      "platform": "linux",
+      "version": "",
+      "size": 0,
+      "releasedAt": "",
+      "downloadUrl": ""
+    },
+    {
+      "platform": "android",
+      "version": "",
+      "size": 0,
+      "releasedAt": "",
+      "downloadUrl": ""
+    }
+  ]
 }
 

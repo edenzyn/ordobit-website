@@ -2,51 +2,36 @@ name: Test Publish
 
 on:
   workflow_dispatch:
-    inputs:
-      platform:
-        description: Device platform
-        required: true
-        type: choice
-        options:
-          - windows
-          - linux
-          - android
-      version:
-        description: Release version
-        required: true
-        type: string
-      download_url:
-        description: Installer URL
-        required: true
-        type: string
-      size:
-        description: Installer size in bytes
-        required: true
-        type: string
 
 permissions:
   contents: write
 
 jobs:
   publish:
+    name: Update Test Releases
     runs-on: ubuntu-latest
+    environment: test
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          ref: test
 
-      - name: Update release
+      - name: Fetch latest releases
         env:
-          RELEASE_PLATFORM: ${{ inputs.platform }}
-          RELEASE_VERSION: ${{ inputs.version }}
-          DOWNLOAD_URL: ${{ inputs.download_url }}
-          RELEASE_SIZE: ${{ inputs.size }}
-        run: node scripts/update-release.mjs
+          DOWNLOADS_BASE_URL: ${{ vars.DOWNLOADS_BASE_URL }}
+        run: node scripts/sync-releases.mjs
 
-      - name: Commit release
+      - name: Push release update
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- releases.json; then
+            echo "Releases are already up to date."
+            exit 0
+          fi
+
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR_ID+$GITHUB_ACTOR@users.noreply.github.com"
           git add releases.json
-          git diff --cached --quiet || git commit -m "chore: update device release"
-          git push
+          git commit -m "chore: update test releases"
+          git push origin HEAD:test
