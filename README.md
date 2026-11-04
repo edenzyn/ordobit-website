@@ -8,9 +8,9 @@ Static website for the Ordobit public homepage and device-client downloads.
 ordobit-website/
 ├── .github/workflows/
 │   └── test-publish.yml              # Refreshes the test release manifest
-├── index.html                        # Landing page
+├── index.html                        # Redirects to pages/landing/
 ├── downloads/
-│   └── index.html                    # Platform download cards
+│   └── index.html                    # Redirects to pages/downloads/
 ├── releases.json                     # Release manifest consumed by downloads page
 ├── scripts/
 │   └── sync-releases.mjs             # Reads public app updater metadata
@@ -26,9 +26,11 @@ ordobit-website/
 │   └── footer.js                     # Reusable site footer renderer
 ├── pages/
 │   ├── landing/
+│   │   ├── index.html                # Under-development landing page
 │   │   ├── landing.css               # Landing page-specific styles
 │   │   └── landing.js                # Landing page rendering
 │   └── downloads/
+│       ├── index.html                # Platform download cards
 │       ├── downloads.css             # Downloads page-specific styles
 │       └── downloads.js              # Card rendering + shared header/footer
 └── shared/
@@ -43,8 +45,8 @@ ordobit-website/
 
 | Page | Path | Description |
 |------|------|-------------|
-| Landing | `/` | Under-development landing with nav to Downloads |
-| Downloads | `/downloads/` | Windows, Linux & Android device-client downloads |
+| Landing | `/` → `/pages/landing/` | Under-development landing with nav to Downloads |
+| Downloads | `/downloads/` → `/pages/downloads/` | Windows, Linux & Android device-client downloads |
 
 ## Local preview
 

@@ -8,12 +8,12 @@ import { renderHeader } from "../../components/header.js";
 import { renderFooter } from "../../components/footer.js";
 
 document.getElementById("site-header").innerHTML = renderHeader({
-  basePath: "../",
+  basePath: "/",
   active: "downloads",
 });
 
 document.getElementById("site-footer").innerHTML = renderFooter({
-  basePath: "../",
+  basePath: "/",
 });
 
 const list = document.querySelector("#download-list");
@@ -30,7 +30,7 @@ const renderDownloadCard = (release) => {
     : `<span class="button button-secondary">Release pending</span>`;
 
   return `<article class="download-card ${available ? "" : "unavailable"}">
-    <div class="platform-icon"><img src="../${release.icon}" alt="" /></div>
+    <div class="platform-icon"><img src="/${release.icon}" alt="" /></div>
     <h2>${release.name}</h2>
     <p class="description">${release.description || "Ordobit device client."}</p>
     <div class="download-meta">
@@ -57,7 +57,7 @@ const render = (releases) => {
   list.setAttribute("aria-busy", "false");
 };
 
-fetch("../releases.json", { cache: "no-cache" })
+fetch("/releases.json", { cache: "no-cache" })
   .then((response) =>
     response.ok
       ? response.json()

@@ -4,7 +4,7 @@ import { renderFooter } from "../../components/footer.js";
 const app = document.getElementById("app");
 
 app.innerHTML = `
-  ${renderHeader({ basePath: "./", active: "landing" })}
+  ${renderHeader({ basePath: "/", active: "landing" })}
 
   <main class="landing-page container">
     <section class="under-dev" aria-labelledby="dev-title">
@@ -24,12 +24,12 @@ app.innerHTML = `
       </p>
 
       <div class="under-dev-actions">
-        <a class="button button-primary" href="downloads/">
+        <a class="button button-primary" href="/downloads/">
           Download Device Client <span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
   </main>
 
-  ${renderFooter({ basePath: "./" })}
+  ${renderFooter({ basePath: "/" })}
 `;
