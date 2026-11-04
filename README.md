@@ -9,8 +9,7 @@ ordobit-website/
 ├── .github/workflows/
 │   └── test-publish.yml              # Refreshes the test release manifest
 ├── index.html                        # Redirects to pages/landing/
-├── downloads/
-│   └── index.html                    # Redirects to pages/downloads/
+├── index (1).html                    # Original founder landing-page draft
 ├── releases.json                     # Release manifest consumed by downloads page
 ├── scripts/
 │   └── sync-releases.mjs             # Reads public app updater metadata
@@ -19,14 +18,14 @@ ordobit-website/
 │   ├── ordobit-logo.svg
 │   └── icons/
 │       ├── windows.svg
-│       ├── linux.svg
 │       └── android.png
 ├── components/
-│   ├── header.js                     # Reusable site header renderer
+│   ├── header.css                    # Shared animated marketing header styles
+│   ├── header.js                     # Shared animated marketing header renderer
 │   └── footer.js                     # Reusable site footer renderer
 ├── pages/
 │   ├── landing/
-│   │   ├── index.html                # Under-development landing page
+│   │   ├── index.html                # Public marketing landing page
 │   │   ├── landing.css               # Landing page-specific styles
 │   │   └── landing.js                # Landing page rendering
 │   └── downloads/
@@ -45,8 +44,8 @@ ordobit-website/
 
 | Page | Path | Description |
 |------|------|-------------|
-| Landing | `/` → `/pages/landing/` | Under-development landing with nav to Downloads |
-| Downloads | `/downloads/` → `/pages/downloads/` | Windows, Linux & Android device-client downloads |
+| Landing | `/` → `/pages/landing/` | Ordobit product and marketing page |
+| Downloads | `/pages/downloads/` | Windows & Android device-client downloads |
 
 ## Local preview
 
@@ -59,15 +58,14 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173>.
 
-## Touch & Device Support
+## Responsive Support
 
-The site is designed for kiosk and touch devices:
+The landing and downloads pages support desktop, tablet and mobile layouts:
 
-- **48 px minimum tap targets** on all interactive elements (buttons, nav links)
-- **`touch-action: manipulation`** on `body` to prevent double-tap zoom
-- **`-webkit-tap-highlight-color: transparent`** for cleaner touch feedback
-- **`@media (pointer: coarse)`** overrides that enlarge controls to 52 px on touch devices
-- **`user-scalable=no`** viewport for kiosk lockdown mode
+- Fluid headings and constrained content widths
+- Responsive grids that collapse for tablet and mobile screens
+- Mobile navigation with keyboard and expanded-state support
+- Keyboard-operable product tabs and currency controls
 
 ## Publishing latest builds
 
@@ -76,7 +74,6 @@ the device-client release process:
 
 ```text
 windows/latest.yml
-linux/latest-linux.yml
 android/latest-android.json
 ```
 

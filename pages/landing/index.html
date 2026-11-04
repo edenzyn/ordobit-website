@@ -1,20 +1,579 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="theme-color" content="#f7f9fc" />
-    <meta
-      name="description"
-      content="Ordobit is building a calmer operating system for modern food businesses."
-    />
-    <title>Ordobit</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/ordobit-logo.svg" />
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/pages/landing/landing.css" />
-  </head>
-  <body>
-    <div class="site-shell" id="app"></div>
-    <script src="/pages/landing/landing.js" type="module"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ordobit: One platform for canteens, food courts & F&B outlets</title>
+<meta name="description" content="Ordobit runs kiosks, counter POS, KDS, CDS, captain ordering, NFC cashless payments and companion apps for canteens, campuses, corporate cafeterias, food courts and restaurants, all from one cloud platform.">
+<meta name="theme-color" content="#f7f8fb">
+<link rel="icon" type="image/svg+xml" href="/assets/ordobit-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/components/header.css">
+<link rel="stylesheet" href="/pages/landing/landing.css">
+</head>
+<body>
+
+<!-- reusable OS icons -->
+<svg class="svg-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <symbol id="i-win" viewBox="0 0 24 24"><path d="M3 5l8-1v8H3zM12 3.9L21 3v9h-9zM3 13h8v7l-8-1zM12 13h9v8l-9-1z"/></symbol>
+  <symbol id="i-and" viewBox="0 0 24 24"><path d="M6 9h12v8a1 1 0 0 1-1 1h-1v3h-2v-3h-4v3H8v-3H7a1 1 0 0 1-1-1zM4 9h1.5v7H4zM18.5 9H20v7h-1.5zM7.5 8a4.5 4.5 0 0 1 9 0z"/></symbol>
+
+  <!-- illustrated menu items -->
+  <symbol id="cup" viewBox="0 0 120 90">
+    <ellipse cx="60" cy="72" rx="44" ry="9" fill="#000" opacity=".07"/>
+    <ellipse cx="60" cy="66" rx="42" ry="12" fill="#fff" stroke="#e1d6c8" stroke-width="2"/>
+    <ellipse cx="60" cy="65" rx="22" ry="5.5" fill="#efe6da"/>
+    <path d="M85 38c13-3 16 15 1 17" fill="none" stroke="#e1d6c8" stroke-width="9" stroke-linecap="round"/>
+    <path d="M85 38c13-3 16 15 1 17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M33 38c0 20 11 27 27 27s27-7 27-27z" fill="#fff" stroke="#e1d6c8" stroke-width="2"/>
+    <ellipse cx="60" cy="38" rx="27" ry="11" fill="#fff" stroke="#e1d6c8" stroke-width="2"/>
+    <path d="M18 70l20-9" stroke="#c9c2b8" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="f-espresso" viewBox="0 0 120 90"><use href="#cup" width="120" height="90"/><ellipse cx="60" cy="38" rx="23" ry="8.5" fill="#5a2f17"/><ellipse cx="60" cy="38" rx="17" ry="6" fill="#8a4b24"/><ellipse cx="55" cy="36.5" rx="6" ry="2" fill="#b8733d" opacity=".8"/></symbol>
+  <symbol id="f-cortado" viewBox="0 0 120 90"><use href="#cup" width="120" height="90"/><ellipse cx="60" cy="38" rx="23" ry="8.5" fill="#a86c3f"/><path d="M60 44c-3-3-3-8 0-11 3 3 3 8 0 11z" fill="#fbf3e6"/><path d="M53 40c2-2 4-2 7 0M53 37c2-2 4-2 7 0M67 40c-2-2-4-2-7 0M67 37c-2-2-4-2-7 0" stroke="#fbf3e6" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="f-capp" viewBox="0 0 120 90"><use href="#cup" width="120" height="90"/><ellipse cx="60" cy="38" rx="23" ry="8.5" fill="#b98458"/><path d="M60 45c-9-4-11-8-8-10.5 2.5-2 6-.5 8 2 2-2.5 5.5-4 8-2 3 2.5 1 6.5-8 10.5z" fill="#fff8ee"/><g fill="#6a3b1f"><circle cx="45" cy="36" r="1.1"/><circle cx="48" cy="40" r="1"/><circle cx="72" cy="35" r="1.1"/><circle cx="74" cy="40" r="1"/><circle cx="50" cy="33" r=".9"/></g></symbol>
+  <symbol id="f-flat" viewBox="0 0 120 90"><use href="#cup" width="120" height="90"/><ellipse cx="60" cy="38" rx="23" ry="8.5" fill="#c4935f"/><g fill="#fff8ee"><ellipse cx="60" cy="43" rx="7" ry="2.2"/><ellipse cx="60" cy="40" rx="6" ry="1.9"/><ellipse cx="60" cy="37.3" rx="5" ry="1.6"/><ellipse cx="60" cy="35" rx="3.8" ry="1.3"/><circle cx="60" cy="33.2" r="1.5"/></g></symbol>
+  <symbol id="f-mocha" viewBox="0 0 120 90"><use href="#cup" width="120" height="90"/><ellipse cx="60" cy="38" rx="23" ry="8.5" fill="#f3e3cd"/><path d="M42 35c6 3 30 3 36 0M42 39c6 3 30 3 36 0M45 43c6 2 24 2 30 0" stroke="#6b3a20" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="92" y="62" width="14" height="10" rx="2" fill="#4a2716" transform="rotate(-15 99 67)"/></symbol>
+  <symbol id="f-spanish" viewBox="0 0 120 90"><ellipse cx="60" cy="80" rx="24" ry="5" fill="#000" opacity=".07"/><path d="M42 18h36l-4 60H46z" fill="#fff" opacity=".6" stroke="#d9cfc2" stroke-width="2"/><path d="M45 62h30l-1.3 16H46.3z" fill="#e9d9bf"/><path d="M44 40h32l-1.5 22h-29z" fill="#a8693c"/><path d="M43 26h34l-1 14H44z" fill="#f7eee0"/><ellipse cx="60" cy="18" rx="18" ry="3.5" fill="#fff" stroke="#d9cfc2" stroke-width="2"/></symbol>
+  <symbol id="f-sweet" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="42" ry="8" fill="#000" opacity=".07"/><g stroke-linecap="round" stroke-width="7"><path d="M40 52l-6-30" stroke="#d9642a"/><path d="M50 50l-2-34" stroke="#e8823f"/><path d="M60 50l3-36" stroke="#d9642a"/><path d="M70 52l7-32" stroke="#e8823f"/><path d="M78 54l12-26" stroke="#d9642a"/><path d="M45 52l6-28" stroke="#f0974f"/><path d="M66 52l-2-30" stroke="#f0974f"/></g><path d="M22 50h76c0 16-16 26-38 26S22 66 22 50z" fill="#fff" stroke="#e1d6c8" stroke-width="2"/><ellipse cx="60" cy="50" rx="38" ry="6" fill="#f6efe6" stroke="#e1d6c8" stroke-width="2"/><g fill="#4f8a3c"><circle cx="44" cy="49" r="1.6"/><circle cx="72" cy="50" r="1.6"/><circle cx="58" cy="48" r="1.3"/></g></symbol>
+  <symbol id="f-truffle" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="42" ry="8" fill="#000" opacity=".07"/><g stroke-linecap="round" stroke-width="6"><path d="M40 52l-6-28" stroke="#f2c14e"/><path d="M50 50l-1-32" stroke="#f6d36b"/><path d="M60 50l3-34" stroke="#f2c14e"/><path d="M70 52l7-30" stroke="#f6d36b"/><path d="M78 54l11-24" stroke="#f2c14e"/><path d="M45 52l6-26" stroke="#e8b03a"/></g><path d="M22 50h76c0 16-16 26-38 26S22 66 22 50z" fill="#fff" stroke="#e1d6c8" stroke-width="2"/><ellipse cx="60" cy="50" rx="38" ry="6" fill="#f6efe6" stroke="#e1d6c8" stroke-width="2"/><g fill="#3a3a3a"><circle cx="45" cy="30" r="1.3"/><circle cx="62" cy="24" r="1.2"/><circle cx="74" cy="34" r="1.3"/></g></symbol>
+  <symbol id="f-prawns" viewBox="0 0 120 90"><ellipse cx="58" cy="74" rx="44" ry="8" fill="#000" opacity=".08"/><rect x="92" y="44" width="26" height="8" rx="4" fill="#2a2a2a" transform="rotate(-12 92 48)"/><ellipse cx="56" cy="52" rx="42" ry="20" fill="#2f2f2f"/><ellipse cx="56" cy="50" rx="36" ry="15" fill="#5a3a22"/><g fill="none" stroke-linecap="round" stroke-width="7"><path d="M34 52c-4-8 6-14 12-8" stroke="#f08a5d"/><path d="M52 46c-4-8 6-14 12-8" stroke="#f4a073"/><path d="M68 54c-4-8 6-14 12-8" stroke="#f08a5d"/><path d="M48 58c-4-8 6-14 12-8" stroke="#f4a073"/></g><g fill="#5f9c43"><circle cx="40" cy="44" r="2"/><circle cx="66" cy="42" r="2"/><circle cx="76" cy="56" r="2"/><circle cx="58" cy="58" r="1.6"/></g><g fill="#fff4cf"><circle cx="44" cy="56" r="1.6"/><circle cx="70" cy="48" r="1.6"/></g></symbol>
+  <symbol id="f-nachos" viewBox="0 0 120 90"><ellipse cx="60" cy="74" rx="46" ry="9" fill="#000" opacity=".07"/><ellipse cx="60" cy="58" rx="46" ry="16" fill="#fff" stroke="#e1d6c8" stroke-width="2"/><g fill="#f2c14e" stroke="#d9a332" stroke-width="1"><path d="M30 56l14-22 8 24z"/><path d="M46 60l10-28 14 24z"/><path d="M64 58l16-22 6 26z"/><path d="M38 62l22-10 4 14z"/><path d="M60 64l20-12 6 14z"/></g><g fill="#d94a3d"><circle cx="48" cy="48" r="2.4"/><circle cx="68" cy="52" r="2.4"/><circle cx="58" cy="58" r="2"/></g><g fill="#5f9c43"><circle cx="54" cy="46" r="1.8"/><circle cx="74" cy="46" r="1.8"/></g><ellipse cx="62" cy="47" rx="6" ry="3" fill="#fff8ee"/></symbol>
+  <symbol id="f-wings" viewBox="0 0 120 90"><ellipse cx="60" cy="74" rx="46" ry="9" fill="#000" opacity=".07"/><ellipse cx="60" cy="58" rx="46" ry="16" fill="#fff" stroke="#e1d6c8" stroke-width="2"/><g fill="#9a3b1c"><ellipse cx="44" cy="52" rx="12" ry="7" transform="rotate(-25 44 52)"/><ellipse cx="66" cy="48" rx="13" ry="7" transform="rotate(15 66 48)"/><ellipse cx="58" cy="60" rx="12" ry="6.5" transform="rotate(-8 58 60)"/><ellipse cx="80" cy="58" rx="10" ry="6" transform="rotate(30 80 58)"/></g><g fill="#c45a2c"><ellipse cx="42" cy="50" rx="5" ry="2.5" transform="rotate(-25 42 50)"/><ellipse cx="64" cy="46" rx="5" ry="2.5" transform="rotate(15 64 46)"/></g><g fill="#fff4cf"><circle cx="48" cy="50" r="1"/><circle cx="62" cy="58" r="1"/><circle cx="70" cy="47" r="1"/><circle cx="82" cy="57" r="1"/></g><g fill="#5f9c43"><circle cx="54" cy="52" r="1.6"/><circle cx="74" cy="54" r="1.6"/></g></symbol>
+</svg>
+
+<div id="site-header"></div>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Unified food service platform</span>
+    <h1>Every counter, kitchen and canteen. <span>One platform.</span></h1>
+    <p class="lead">Ordobit runs corporate cafeterias, college canteens, multi-vendor food courts and restaurants from a single cloud. Self-ordering kiosks, counter POS, KDS, CDS, captain ordering, NFC cashless payments and companion apps all work together.</p>
+    <div class="cta">
+      <a class="btn btn-dark" href="#contact">Book a free demo →</a>
+      <a class="btn btn-line" href="#solutions">See solutions</a>
+    </div>
+    <div class="runs">
+      <span>Runs on</span>
+      <span class="osb win"><i><svg><use href="#i-win"/></svg></i>Windows</span>
+      <span class="osb and"><i><svg><use href="#i-and"/></svg></i>Android</span>
+    </div>
+
+    <div class="stage">
+      <div class="frame">
+        <div class="bar">
+          <div><span class="t">Counter</span> <span class="s">· Counter 2</span></div>
+          <div class="counter-status"><span class="pill b">Orders</span><span class="pill g">Day open</span><span class="s">2:57 PM</span></div>
+        </div>
+        <div class="pos">
+          <div class="cats">
+            <div class="c on">Espresso Bar<small>8 items</small></div>
+            <div class="c">Slow Bar & Pour Overs<small>4 items</small></div>
+            <div class="c">Cold Coffee Atelier<small>6 items</small></div>
+            <div class="c">Teas & Chai<small>6 items</small></div>
+            <div class="c">Small Plates<small>5 items</small></div>
+            <div class="c">All-Day Breakfast<small>8 items</small></div>
+          </div>
+          <div class="grid">
+            <div class="item sel"><span class="veg"></span><span class="badge">2</span><div class="tile t1"><svg><use href="#f-espresso"/></svg></div><b>Espresso</b><i>₹220</i></div>
+            <div class="item"><span class="veg"></span><div class="tile t2"><svg><use href="#f-cortado"/></svg></div><b>Cortado</b><i>₹260</i></div>
+            <div class="item"><span class="veg"></span><div class="tile t3"><svg><use href="#f-capp"/></svg></div><b>Cappuccino</b><i>₹290</i></div>
+            <div class="item"><span class="veg"></span><div class="tile t4"><svg><use href="#f-flat"/></svg></div><b>Flat White</b><i>₹310</i></div>
+            <div class="item sel"><span class="veg"></span><span class="badge">2</span><div class="tile t5"><svg><use href="#f-sweet"/></svg></div><b>Sweet Potato Fries</b><i>₹320</i></div>
+            <div class="item"><span class="veg nv"></span><div class="tile t6"><svg><use href="#f-prawns"/></svg></div><b>Garlic Butter Prawns</b><i>₹620</i></div>
+          </div>
+          <div class="cart">
+            <b class="current-order-title">Current order</b>
+            <div class="seg"><span class="on">Dine in</span><span>Takeaway</span></div>
+            <div class="line"><span>Espresso<small>× 2</small></span><span>₹440</span></div>
+            <div class="line"><span>Sweet Potato Fries<small>× 2</small></span><span>₹640</span></div>
+            <div class="line"><span>Loaded Nachos<small>Chicken · × 1</small></span><span>₹470</span></div>
+            <div class="tot">
+              <div class="r big"><span>Total</span><span>₹1,550</span></div>
+              <div class="paym"><span>Cash</span><span>Card</span><span>UPI</span><span class="on">NFC</span></div>
+              <div class="charge">Charge ₹1,550.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float f1">
+        <div class="muted-text">NFC wallet · tap to pay</div>
+        <div class="token">#005</div>
+        <div class="muted-text">Sent to KDS & CDS instantly</div>
+      </div>
+      <div class="float f2">
+        <div class="float-header"><b>Food court · 6 outlets</b><span class="pill g">Live</span></div>
+        <div class="float-summary">412 orders today<br>One wallet, every vendor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>5 devices</b><span>Kiosk, Counter POS, KDS, CDS, Captain</span></div>
+    <div><b>4 apps</b><span>Owner, Captain, Customer, Online ordering</span></div>
+    <div><b>Multi-outlet</b><span>Branches, vendors and sites in one cloud</span></div>
+    <div><b>Global</b><span>Multi-currency, multi-language, multi-payment</span></div>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="wrap">
+    <span class="eyebrow">Solutions</span>
+    <h2>Built for how people actually eat at scale.</h2>
+    <p class="lead">From a single café to a campus with dozens of counters, Ordobit adapts to the way your site runs.</p>
+    <div class="segs">
+      <div class="sg">
+        <div class="tag">Corporate</div>
+        <h3>IT & corporate cafeterias</h3>
+        <p>Feed thousands of employees across shifts without queues or cash.</p>
+        <ul><li>Employee NFC / ID-card payments</li><li>Company subsidies & meal allowances</li><li>Multiple vendors, one billing view</li><li>Pre-order & pickup windows</li></ul>
+      </div>
+      <div class="sg">
+        <div class="tag">Education</div>
+        <h3>College & school canteens</h3>
+        <p>Cashless campuses where parents and students top up a wallet card.</p>
+        <ul><li>Prepaid NFC wallet cards</li><li>Top-up at counter or online</li><li>Spend limits & item controls</li><li>Android kiosks for quick self-service</li></ul>
+      </div>
+      <div class="sg">
+        <div class="tag">Food courts</div>
+        <h3>Food courts & malls</h3>
+        <p>Many outlets under one roof, run as one site.</p>
+        <ul><li>Multi-vendor management</li><li>Shared kiosks, separate kitchens</li><li>One wallet card for every outlet</li><li>Vendor-wise sales & settlement</li></ul>
+      </div>
+      <div class="sg">
+        <div class="tag">F&B</div>
+        <h3>Restaurants, cafés & chains</h3>
+        <p>One outlet or hundreds, with every channel in a single POS.</p>
+        <ul><li>Dine-in, takeaway & captain ordering</li><li>Your own branded customer app</li><li>Third-party delivery platform orders</li><li>Central menus across locations</li></ul>
+      </div>
+    </div>
+
+    <div class="court court-spaced">
+      <div>
+        <span class="eyebrow">Food courts & cashless sites</span>
+        <h2 class="court-title">One card. Every outlet. Clean settlements.</h2>
+        <p class="lead court-lead">Guests tap one NFC wallet card at any vendor. Each outlet gets its own menu, KDS and reports. The site operator sees everything and settles with each vendor automatically.</p>
+        <div class="vendors vendors-spaced">
+          <div class="vd"><span class="amt">₹18,240</span><b>The Brew Atelier</b><span>Coffee · 96 orders</span></div>
+          <div class="vd"><span class="amt">₹26,910</span><b>Spice Route</b><span>South Indian · 132 orders</span></div>
+          <div class="vd"><span class="amt">₹14,780</span><b>Wok Street</b><span>Asian · 71 orders</span></div>
+          <div class="vd"><span class="amt">₹22,450</span><b>Grill House</b><span>Burgers · 113 orders</span></div>
+          <div class="hub"><span>Site total · 6 outlets · today</span><b>₹1,04,620</b></div>
+        </div>
+      </div>
+      <div>
+        <div class="nfc"><span class="w"></span><span class="subdued">CAMPUS WALLET</span><b>₹1,250.00</b><div class="ft"><span>Employee · #48213</span><span>ordobit</span></div></div>
+        <ul class="ticks nfc-ticks">
+          <li>Tap to pay at kiosks and counters</li>
+          <li>Top-up by cash, card, UPI or online</li>
+          <li>Block lost cards, transfer balance</li>
+          <li>Full transaction history per card</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVICES -->
+<section id="devices" class="white">
+  <div class="wrap">
+    <span class="eyebrow">Devices</span>
+    <h2>Five devices, working together.</h2>
+    <p class="lead">Start with one counter and add kiosks, KDS, CDS and captain devices as you grow. Every device shares the same menu and sends orders to the same place.</p>
+
+    <div class="tabs" role="tablist" aria-label="Ordobit device types">
+      <button class="tab on" id="tab-kiosk" type="button" role="tab" aria-selected="true" aria-controls="p-kiosk" data-p="p-kiosk">Self-ordering Kiosk</button>
+      <button class="tab" id="tab-counter" type="button" role="tab" aria-selected="false" aria-controls="p-counter" data-p="p-counter">Counter POS</button>
+      <button class="tab" id="tab-kds" type="button" role="tab" aria-selected="false" aria-controls="p-kds" data-p="p-kds">KDS</button>
+      <button class="tab" id="tab-cds" type="button" role="tab" aria-selected="false" aria-controls="p-cds" data-p="p-cds">CDS</button>
+      <button class="tab" id="tab-captain" type="button" role="tab" aria-selected="false" aria-controls="p-captain" data-p="p-captain">Captain Ordering</button>
+    </div>
+
+    <div class="panel on" id="p-kiosk" role="tabpanel" aria-labelledby="tab-kiosk">
+      <div>
+        <h3>Let guests order themselves.</h3>
+        <p>A touch-first kiosk that turns your menu into a visual storefront. Guests browse, customise and pay, then walk away with a token. Queues get shorter and baskets get bigger.</p>
+        <ul class="ticks">
+          <li>Photo-led menu with veg / non-veg markers and calories</li>
+          <li>Modifiers and variants, e.g. Loaded Nachos with Chicken</li>
+          <li>Dine-in or takeaway with per-order charges</li>
+          <li>Pay by NFC card, card, UPI, wallet or cash</li>
+          <li>Multi-language menus for global sites</li>
+        </ul>
+      </div>
+      <div class="kiosk">
+        <div class="kscreen">
+          <div class="khead"><div class="brand">THE BREW ATELIER</div><h4>What are you craving?</h4></div>
+          <div class="kchips"><span class="on">Espresso Bar</span><span>Cold Coffee</span><span>Small Plates</span><span>Pastas</span></div>
+          <div class="kgrid">
+            <div class="kitem"><div class="tile t3"><svg><use href="#f-capp"/></svg></div><b>Cappuccino</b><i>₹290</i><span class="add">+</span></div>
+            <div class="kitem"><div class="tile t4"><svg><use href="#f-flat"/></svg></div><b>Flat White</b><i>₹310</i><span class="add">+</span></div>
+            <div class="kitem"><div class="tile t5"><svg><use href="#f-sweet"/></svg></div><b>Sweet Potato Fries</b><i>₹320</i><span class="add">+</span></div>
+            <div class="kitem"><div class="tile t6"><svg><use href="#f-prawns"/></svg></div><b>Garlic Prawns</b><i>₹620</i><span class="add">+</span></div>
+          </div>
+          <div class="kcart"><span>View cart · 3 items</span><span>₹1,220 →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-counter" role="tabpanel" aria-labelledby="tab-counter" hidden>
+      <div>
+        <h3>A counter cashiers learn in minutes.</h3>
+        <p>Category rail, item grid and a live cart. Tap to add, tap to charge. Built for rush hour, with shift tracking and day open / close controls.</p>
+        <ul class="ticks">
+          <li>Dine-in and takeaway with instant token numbers</li>
+          <li>Split and multiple payment methods per bill</li>
+          <li>NFC wallet top-ups at the counter</li>
+          <li>Shift timer, staff login and handover</li>
+          <li>Custom receipt and KOT print templates</li>
+        </ul>
+      </div>
+      <div class="frame">
+        <div class="bar"><span class="t">Payment successful</span><span class="pill g">Paid in cash</span></div>
+        <div class="payment-success">
+          <div class="payment-caption">Amount paid</div>
+          <div class="payment-amount">₹3,759.00</div>
+          <div class="payment-token">
+            <div class="payment-token-label">TOKEN</div>
+            <div class="token payment-token-value">#005</div>
+          </div>
+          <div class="payment-caption">9 items · Takeaway · Order ORD-261030-00000T</div>
+          <div class="charge payment-done">Done</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-kds" role="tabpanel" aria-labelledby="tab-kds" hidden>
+      <div>
+        <h3>The kitchen sees every order, in order.</h3>
+        <p>Paper KOTs get lost. The KDS shows live tickets the moment they're paid, colour-codes them by age and lets cooks bump items as they're plated.</p>
+        <ul class="ticks">
+          <li>Tickets appear instantly from kiosk, counter, captain and online</li>
+          <li>Colour timers: new, running late, overdue</li>
+          <li>Modifiers highlighted so nothing is missed</li>
+          <li>Bump an item or the whole ticket, and the CDS updates</li>
+          <li>Station routing, e.g. bar vs hot kitchen</li>
+        </ul>
+      </div>
+      <div class="kds">
+        <div class="top"><b>KDS · The Brew Atelier</b><span>5 active · avg 6:40</span></div>
+        <div class="tickets">
+          <div class="tk late">
+            <div class="h">#003 <small class="timer-late">12:48</small></div>
+            <div class="meta"><span>Dine-in · Counter</span><span>6 items</span></div>
+            <ul><li class="done"><b>2</b>Cappuccino</li><li><b>2</b>Penne Arrabbiata</li><li><b>2</b>Truffle Parmesan Fries</li></ul>
+            <div class="bump">Bump order</div>
+          </div>
+          <div class="tk warn">
+            <div class="h">#004 <small class="timer-warning">07:12</small></div>
+            <div class="meta"><span>Table 7 · Captain</span><span>3 items</span></div>
+            <ul><li><b>1</b>Korean Fried Chicken Wings</li><li><b>1</b>Spanish Latte</li><li><b>1</b>Mocha</li></ul>
+            <div class="bump">Bump order</div>
+          </div>
+          <div class="tk new">
+            <div class="h">#005 <small class="timer-new">00:41</small></div>
+            <div class="meta"><span>Takeaway · Kiosk</span><span>9 items</span></div>
+            <ul><li><b>2</b>Espresso</li><li><b>2</b>Sweet Potato Fries</li><li><b>2</b>Garlic Butter Prawns</li><li><b>2</b>Penne Arrabbiata</li><li><b>1</b><span>Loaded Nachos<em>+ Chicken</em></span></li></ul>
+            <div class="bump">Bump order</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-cds" role="tabpanel" aria-labelledby="tab-cds" hidden>
+      <div>
+        <h3>Guests know exactly when to collect.</h3>
+        <p>A screen near pickup that moves tokens from Preparing to Ready. No shouting names, no crowding the counter. In food courts, one CDS can show every outlet.</p>
+        <ul class="ticks">
+          <li>Live Preparing / Ready token board</li>
+          <li>Ready tokens highlight with a chime</li>
+          <li>Your branding, colours and promo banners</li>
+          <li>Runs on any TV through a Windows or Android box</li>
+        </ul>
+      </div>
+      <div class="cds">
+        <div class="h"><span class="brand">THE BREW ATELIER</span><span class="display-time">Fri, 30 Oct · 2:59 PM</span></div>
+        <div class="cols">
+          <div class="col"><h5>Preparing</h5><div class="tokens"><span>#003</span><span>#004</span><span>#005</span></div></div>
+          <div class="col ready"><h5>Ready to collect</h5><div class="tokens"><span class="flash">#002</span><span>#001</span></div></div>
+        </div>
+        <div class="promo"><span>☕ Try the new Honey Cinnamon Latte</span><b>₹360</b></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-captain" role="tabpanel" aria-labelledby="tab-captain" hidden>
+      <div>
+        <h3>Take orders at the table.</h3>
+        <p>Captains and waiters carry the menu in their pocket. They pick a table, punch the order and send it straight to the KDS, with no walking back to the counter.</p>
+        <ul class="ticks">
+          <li>Live table map with occupied / free status</li>
+          <li>Add items, notes and modifiers per guest</li>
+          <li>Fire courses and add to running orders</li>
+          <li>Request bill and settle at the counter or table</li>
+          <li>Runs on any Android phone or tablet</li>
+        </ul>
+      </div>
+      <div class="phone">
+        <div class="pscreen">
+          <div class="ph"><b>Tables</b><span class="pill v">Captain · Ravi</span></div>
+          <div class="tables"><span>1</span><span class="busy">2</span><span>3</span><span class="busy">4</span><span>5</span><span>6</span><span class="sel">7</span><span class="busy">8</span></div>
+          <div class="table-summary">Table 7 · 2 guests</div>
+          <div class="plist">
+            <div><span>Korean Fried Chicken Wings<small>Extra spicy</small></span><span class="qty"><i>−</i>1<i>+</i></span></div>
+            <div><span>Spanish Latte</span><span class="qty"><i>−</i>1<i>+</i></span></div>
+            <div><span>Mocha<small>Oat milk</small></span><span class="qty"><i>−</i>1<i>+</i></span></div>
+          </div>
+          <div class="send">Send to kitchen · ₹1,200</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom">
+      <div><b>Need something specific?</b><span>We build custom applications and integrations on the Ordobit platform for enterprises, campuses and chains.</span></div>
+      <a class="btn btn-line" href="#contact">Talk to us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORDERING CHANNELS -->
+<section id="ordering">
+  <div class="wrap">
+    <span class="eyebrow">Your own app + every channel</span>
+    <h2>Orders from anywhere land in one POS.</h2>
+    <p class="lead">Give customers your own branded ordering app. Their orders, along with website, QR and third-party delivery platform orders, drop straight into the Ordobit POS and KDS. No extra tablets, no re-typing.</p>
+    <div class="capp ordering-layout">
+      <div class="phone">
+        <div class="pscreen">
+          <div class="abrand"><span class="brand">THE BREW ATELIER</span><span class="bal">Wallet ₹1,250</span></div>
+          <div class="ahero"><span class="subdued">Good afternoon, Priya</span><b>Order ahead, skip the queue</b>Pickup at Counter 2 · ready in ~8 min</div>
+          <div class="alist">
+            <div class="r"><div class="tile t3"><svg><use href="#f-capp"/></svg></div><span><b>Cappuccino</b><i>₹290</i></span><span class="add">+</span></div>
+            <div class="r"><div class="tile t1"><svg><use href="#f-spanish"/></svg></div><span><b>Spanish Latte</b><i>₹340</i></span><span class="add">+</span></div>
+            <div class="r"><div class="tile t2"><svg><use href="#f-mocha"/></svg></div><span><b>Mocha</b><i>₹380</i></span><span class="add">+</span></div>
+            <div class="r"><div class="tile t7"><svg><use href="#f-nachos"/></svg></div><span><b>Loaded Nachos</b><i>₹420</i></span><span class="add">+</span></div>
+            <div class="r"><div class="tile t8"><svg><use href="#f-wings"/></svg></div><span><b>Korean Fried Wings</b><i>₹480</i></span><span class="add">+</span></div>
+          </div>
+          <div class="send send-order">Place order · ₹1,010</div>
+        </div>
+      </div>
+      <div>
+        <div class="hubwrap">
+          <div class="srcs">
+            <div class="src"><i class="source-dot source-dot-app"></i>Your customer app</div>
+            <div class="src"><i class="source-dot source-dot-web"></i>Online ordering website</div>
+            <div class="src"><i class="source-dot source-dot-qr"></i>QR table ordering</div>
+            <div class="src"><i class="source-dot source-dot-delivery"></i>Third-party delivery apps</div>
+            <div class="src"><i class="source-dot source-dot-marketplace"></i>Marketplace & aggregator platforms</div>
+          </div>
+          <div class="arrow"></div>
+          <div class="inbox">
+            <div class="bar"><span class="t">Incoming orders · POS</span><span class="pill g">Live</span></div>
+            <div class="o"><span class="chan channel-app">APP</span><span><b>#006 · 4 items</b><small>Pickup · Paid via wallet</small></span><span class="acc">Accept</span></div>
+            <div class="o"><span class="chan channel-delivery">DELIVERY</span><span><b>#007 · 3 items</b><small>Rider in 12 min</small></span><span class="acc">Accept</span></div>
+            <div class="o"><span class="chan channel-qr">QR</span><span><b>#008 · Table 4</b><small>2 items · Dine-in</small></span><span class="acc">Accept</span></div>
+            <div class="o order-last"><span class="chan channel-web">WEB</span><span><b>#009 · 6 items</b><small>Scheduled 6:30 PM</small></span><span class="acc">Accept</span></div>
+          </div>
+        </div>
+        <ul class="ticks ordering-ticks">
+          <li>White-label app in your brand on iOS and Android</li>
+          <li>Accept, prepare and track every order from one screen</li>
+          <li>Menu and stock sync to every channel in one click</li>
+          <li>Pause a channel during rush hour without closing the store</li>
+          <li>Channel-wise sales in the Owner's App</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps" class="white">
+  <div class="wrap">
+    <span class="eyebrow">Apps</span>
+    <h2>Beyond the counter.</h2>
+    <p class="lead">Companion apps for owners, staff and guests, all connected to the same orders, menus and wallets.</p>
+    <div class="apps">
+      <div class="ap"><div class="ic app-icon-owner"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h4>Owner's App</h4><p>Your business in your pocket, live.</p><ul><li>Sales & reports by outlet</li><li>Item and hourly trends</li><li>Day close summaries</li><li>Alerts and approvals</li></ul></div>
+      <div class="ap"><div class="ic app-icon-captain"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div><h4>Captain App</h4><p>Table-side ordering for service staff.</p><ul><li>Table map</li><li>Order and fire courses</li><li>Notes and modifiers</li><li>Bill requests</li></ul></div>
+      <div class="ap"><div class="ic app-icon-customer"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></div><h4>Customer App</h4><p>Your own branded app. Orders land straight in the POS.</p><ul><li>Order ahead, pickup or delivery</li><li>Wallet balance & top-up</li><li>Order-ready notifications</li><li>Loyalty & order history</li></ul></div>
+      <div class="ap"><div class="ic app-icon-online"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h4>Online Ordering</h4><p>Your own branded ordering site.</p><ul><li>Pickup & delivery</li><li>QR table ordering</li><li>Online payments</li><li>Feeds straight to the KDS</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>One order, every screen, zero re-typing.</h2>
+    <div class="flow">
+      <div class="step"><div class="n">01</div><h4>Order</h4><p>At a kiosk, counter, captain device, your app, online or a delivery platform.</p></div>
+      <div class="step"><div class="n">02</div><h4>Pay</h4><p>NFC card, card, UPI, wallet or cash, through any integrated gateway.</p></div>
+      <div class="step"><div class="n">03</div><h4>Token</h4><p>A token number is issued and printed on the receipt.</p></div>
+      <div class="step"><div class="n">04</div><h4>Cook</h4><p>The ticket lands on the KDS instantly. Cooks bump when done.</p></div>
+      <div class="step"><div class="n">05</div><h4>Collect</h4><p>The CDS flips the token to Ready and the app notifies the guest.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="features">
+  <div class="wrap">
+    <span class="eyebrow">Cloud platform</span>
+    <h2>Run every site from one place.</h2>
+    <p class="lead">Owners and operators control menus, devices, vendors, staff and licences from the browser. No on-site server needed.</p>
+
+    <div class="frame admin-frame">
+      <div class="bar"><span class="logo admin-logo">ordob<span class="i">ı</span>t</span><span class="pill g">Business day · Open</span></div>
+      <div class="admin">
+        <div class="side"><div class="on">Dashboard</div><div>Orders</div><div>Menu</div><div>Devices</div><div>Licences</div><div>Branch</div><div>Account</div></div>
+        <div class="main">
+          <b class="active-orders-title">Active orders · today</b>
+          <div class="kpis">
+            <div class="kpi"><b>5</b><span>New</span></div>
+            <div class="kpi"><b>3</b><span>Preparing</span></div>
+            <div class="kpi"><b>2</b><span>Ready</span></div>
+            <div class="kpi"><b>₹13,239</b><span>Sales today</span></div>
+          </div>
+          <div class="tbl">
+            <div><span>TOKEN</span><span>ORDER</span><span>CHANNEL</span><span>STATUS</span></div>
+            <div><b>#005</b><span>9 items · Takeaway</span><span>Kiosk</span><span class="pill g">Paid</span></div>
+            <div><b>#004</b><span>3 items · Dine-in</span><span>Captain</span><span class="pill g">Paid</span></div>
+            <div><b>#003</b><span>6 items · Dine-in</span><span>Counter</span><span class="pill g">Paid</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 3v18M8 3v6a4 4 0 0 1-4 4M16 3c-2 0-3 3-3 6s1 4 3 4v8"/></svg></div><h4>Menu management</h4><p>Categories, items, photos, veg tags, calories, variants and listing status. Import a full menu in one go.</p></div>
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h4>Device management</h4><p>Register kiosks, counters, KDS, CDS and captain devices by pairing code. See online / offline status and licences at a glance.</p></div>
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div><h4>Multiple payment integrations</h4><p>Plug in the gateways your region uses and accept every common payment type.</p><div class="chips"><span>NFC wallet</span><span>Cards</span><span>UPI</span><span>QR</span><span>Digital wallets</span><span>Cash</span></div></div>
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><path d="M6 8v8M8 6h8M18 8c0 6-6 10-10 10"/></svg></div><h4>Multi-outlet & multi-vendor</h4><p>Branches, food court vendors and sites under one organisation, with orders and sales across all of them.</p></div>
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Users, roles & shifts</h4><p>Granular permissions per role. Staff clock in and out of shifts on each device.</p></div>
+      <div class="fc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h4>Business days & controls</h4><p>Open and close the day, pause orders in a rush and keep every order tied to the right business date.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="white">
+  <div class="wrap">
+    <span class="eyebrow">Hardware freedom</span>
+    <h2>Install anywhere. Run anything.</h2>
+    <p class="lead">One Ordobit client in two native builds. Use the hardware you already own, or mix platforms across the same site.</p>
+    <div class="plats">
+      <div class="pl w"><div class="big"><svg><use href="#i-win"/></svg></div><div class="lg"><svg><use href="#i-win"/></svg></div><h4>Windows</h4><p>For counter terminals, all-in-one POS and large-format kiosks.</p><div class="roles"><span>Counter POS</span><span>Kiosk</span><span>KDS</span><span>CDS</span></div></div>
+      <div class="pl a"><div class="big"><svg><use href="#i-and"/></svg></div><div class="lg"><svg><use href="#i-and"/></svg></div><h4>Android</h4><p>Touch-first for tablets, Android kiosks and handheld captain devices.</p><div class="roles"><span>Kiosk</span><span>Captain</span><span>CDS</span><span>KDS</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Who uses Ordobit</span>
+    <h2>Wherever food is served fast.</h2>
+    <div class="uses">
+      <div class="use"><b>IT parks & offices</b><span>Employee cafeterias with ID-card payments.</span></div>
+      <div class="use"><b>Colleges & schools</b><span>Cashless canteens with prepaid wallets.</span></div>
+      <div class="use"><b>Food courts & malls</b><span>Many vendors, one platform, clean settlements.</span></div>
+      <div class="use"><b>Hospitals & factories</b><span>High-volume, shift-based staff canteens.</span></div>
+      <div class="use"><b>Cafés & QSR</b><span>Kiosks and tokens to cut queues.</span></div>
+      <div class="use"><b>Restaurants</b><span>Captain ordering and table service.</span></div>
+      <div class="use"><b>Chains & franchises</b><span>Central menus across every location.</span></div>
+      <div class="use"><b>Events & pop-ups</b><span>Weekly licences, set up in minutes.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="white">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h2>Pay per device. Nothing else.</h2>
+    <p class="lead">Every device needs its own licence. Choose weekly for pop-ups and events, or yearly for the best rate.</p>
+    <div class="cur" role="group" aria-label="Currency"><button class="on" type="button" aria-pressed="true" data-c="usd">USD $</button><button type="button" aria-pressed="false" data-c="inr">INR ₹</button></div>
+    <div class="price-grid">
+      <div class="pc hl"><h4>Kiosk</h4><div class="from">Yearly plan</div><div class="amt"><span class="p" data-usd="$42" data-inr="₹3,500">$42</span><small> / year</small></div><ul><li>Weekly plan <span class="p" data-usd="$5" data-inr="₹400">$5</span></li><li>Touch self-ordering</li><li>All payment types</li><li>Multi-language</li></ul><a class="btn btn-dark" href="#contact">Get started</a></div>
+      <div class="pc"><h4>Counter POS</h4><div class="from">Starting from</div><div class="amt"><span class="p" data-usd="$6" data-inr="₹500">$6</span></div><ul><li>Dine-in & takeaway</li><li>NFC top-ups</li><li>Shifts & day close</li><li>Print templates</li></ul><a class="btn btn-line" href="#contact">Get started</a></div>
+      <div class="pc"><h4>KDS</h4><div class="from">Starting from</div><div class="amt"><span class="p" data-usd="$4" data-inr="₹300">$4</span></div><ul><li>Live tickets</li><li>Colour timers</li><li>Bump & recall</li><li>Station routing</li></ul><a class="btn btn-line" href="#contact">Get started</a></div>
+      <div class="pc"><h4>CDS</h4><div class="from">Starting from</div><div class="amt"><span class="p" data-usd="$3" data-inr="₹250">$3</span></div><ul><li>Preparing / Ready board</li><li>Ready chime</li><li>Promo banners</li><li>Your branding</li></ul><a class="btn btn-line" href="#contact">Get started</a></div>
+      <div class="pc"><h4>Captain</h4><div class="from">Pricing</div><div class="amt captain-price">Talk to us</div><ul><li>Table map</li><li>Course firing</li><li>Notes & modifiers</li><li>Android devices</li></ul><a class="btn btn-line" href="#contact">Contact sales</a></div>
+    </div>
+    <p class="note">Prices exclude taxes. Owner, Customer and Online Ordering apps, NFC wallet setups, enterprise and custom deployments are quoted per site. Hardware bundles are available on request.</p>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section id="download">
+  <div class="wrap">
+    <div class="dl">
+      <span class="eyebrow download-eyebrow">Device client</span>
+      <h2>Download the Ordobit device client.</h2>
+      <p class="lead">Install once, then choose whether the device runs as a Kiosk, Counter POS, KDS, CDS or Captain.</p>
+      <div class="dl-grid">
+        <div class="dc"><div class="os os-windows"><svg><use href="#i-win"/></svg></div><h4>Windows</h4><p>For counter terminals and Windows kiosks.</p><a class="btn btn-green" href="/pages/downloads/">Download for Windows ↓</a></div>
+        <div class="dc"><div class="os os-android"><svg><use href="#i-and"/></svg></div><h4>Android</h4><p>For Android kiosks, tablets and captain devices.</p><a class="btn btn-green" href="/pages/downloads/">Download for Android ↓</a></div>
+      </div>
+      <div class="connect">
+        <div><b>01</b>Install the client on the device.</div>
+        <div><b>02</b>Open the app and pair it with your workspace using the device code.</div>
+        <div><b>03</b>Choose the device role and start the shift.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="faq-heading"><span class="eyebrow">FAQ</span><h2>Questions, answered.</h2></div>
+    <div class="faq">
+      <details><summary>Is Ordobit only for restaurants?</summary><p>No. Ordobit is built for any food service operation: corporate cafeterias, college and school canteens, hospital and factory canteens, multi-vendor food courts, cafés, QSRs and restaurants.</p></details>
+      <details><summary>How do NFC cashless payments work?</summary><p>Each user gets an NFC wallet card that is topped up at a counter or online. They tap it at any kiosk or counter on the site, and balances, limits and history are managed centrally.</p></details>
+      <details><summary>Can one platform run a food court with many vendors?</summary><p>Yes. Each vendor gets its own menu, KDS and reports, while the site operator sees all sales in one place and settles with each vendor.</p></details>
+      <details><summary>Can customers order from our own app?</summary><p>Yes. We set up a branded customer app for your business. Orders placed in it go straight to your Ordobit POS and KDS, where staff accept and process them like any other order.</p></details>
+      <details><summary>Do you integrate with third-party ordering platforms?</summary><p>Yes. Orders from delivery and aggregator platforms flow into the same POS, so you don't need a separate tablet per platform. Tell us which platforms you use and we'll confirm availability for your region.</p></details>
+      <details><summary>Do I need special hardware?</summary><p>No. Ordobit runs on standard Windows and Android devices. If you prefer a ready-to-go setup, we can bundle kiosks, POS terminals, printers and displays.</p></details>
+      <details><summary>Which payment methods are supported?</summary><p>NFC wallets, cards, UPI, QR, digital wallets and cash, through multiple gateway integrations. Tell us your region and we'll confirm the options.</p></details>
+      <details><summary>Can you build custom features for us?</summary><p>Yes. We build custom applications and integrations for enterprises, campuses and chains, such as HR or ERP sync, subsidy rules and access control.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="final white">
+  <div class="wrap">
+    <span class="eyebrow">Get started</span>
+    <h2>See Ordobit running at your site.</h2>
+    <p class="lead">Book a 20-minute walkthrough. We'll set up a demo with your own menu and outlets.</p>
+    <div class="cta-actions">
+      <a class="btn btn-dark" href="mailto:hello@ordobit.com?subject=Ordobit%20demo">Book a demo →</a>
+      <a class="btn btn-line" href="https://wa.me/910000000000">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="footer-brand" href="/pages/landing/" aria-label="Ordobit home">
+      <img src="/assets/ordobit-logo.svg" alt="Ordobit">
+    </a>
+    <div class="fl"><a href="#solutions">Solutions</a><a href="#devices">Devices</a><a href="#apps">Apps</a><a href="#pricing">Pricing</a><a href="/pages/downloads/">Downloads</a><a href="https://test-user.ordobit.com">Log in</a></div>
+    <span>© 2026 Ordobit. Built for better service.</span>
+  </div>
+</footer>
+
+<script src="/pages/landing/landing.js" type="module"></script>
+</body>
 </html>

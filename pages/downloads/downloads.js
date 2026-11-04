@@ -4,17 +4,16 @@ import {
 } from "../../shared/constants/platforms.js";
 import { formatDate } from "../../shared/utils/dateUtils.js";
 import { formatFileSize } from "../../shared/utils/fileUtils.js";
-import { renderHeader } from "../../components/header.js";
+import { initializeHeader, renderHeader } from "../../components/header.js";
 import { renderFooter } from "../../components/footer.js";
 
-document.getElementById("site-header").innerHTML = renderHeader({
-  basePath: "/",
+const header = document.getElementById("site-header");
+header.innerHTML = renderHeader({
   active: "downloads",
 });
+initializeHeader(header);
 
-document.getElementById("site-footer").innerHTML = renderFooter({
-  basePath: "/",
-});
+document.getElementById("site-footer").innerHTML = renderFooter();
 
 const list = document.querySelector("#download-list");
 

@@ -7,13 +7,6 @@ export const PLATFORM_DEFINITIONS = [
     icon: "assets/icons/windows.svg",
   },
   {
-    platform: "linux",
-    name: "Linux",
-    description: "Desktop client for Linux kiosk and service devices.",
-    fileType: "AppImage",
-    icon: "assets/icons/linux.svg",
-  },
-  {
     platform: "android",
     name: "Android",
     description: "Touch-first client for Android kiosk hardware.",

@@ -92,7 +92,6 @@ const androidRelease = async () => {
 const releases = (
   await Promise.all([
     desktopRelease("windows", "latest.yml"),
-    desktopRelease("linux", "latest-linux.yml"),
     androidRelease(),
   ])
 ).filter(Boolean);
